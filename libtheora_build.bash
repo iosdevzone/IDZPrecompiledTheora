@@ -1,8 +1,10 @@
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 pushd $IDZ_BUILD_ROOT
 
 IDZ_FW_NAME=Theora
 IDZ_NAME=theora
 IDZ_LIB_VERSION=1.1.1
+IDZ_IOS_SDK_VERSION=8.0
 
 IDZ_LIB=lib$IDZ_NAME
 IDZ_LIB_ALL=$IDZ_LIBall.a
@@ -21,18 +23,18 @@ unzip $IDZ_LIB_DIR.$IDZ_ARCHIVE_SUFFIX
 
 # Phone builds
 export IDZ_EXTRA_CONFIGURE_FLAGS=--with-ogg=$IDZ_BUILD_ROOT/libogg/1.3.1/install-iPhoneOS-armv7
-idz_configure armv7 7.0 $IDZ_LIB_DIR/configure
+idz_configure armv7 ${IDZ_IOS_SDK_VERSION} $IDZ_LIB_DIR/configure
 export IDZ_EXTRA_CONFIGURE_FLAGS=-with-ogg=$IDZ_BUILD_ROOT/libogg/1.3.1/install-iPhoneOS-armv7s
-idz_configure armv7s 7.0 $IDZ_LIB_DIR/configure
+idz_configure armv7s ${IDZ_IOS_SDK_VERSION} $IDZ_LIB_DIR/configure
 export IDZ_EXTRA_CONFIGURE_FLAGS=--with-ogg=$IDZ_BUILD_ROOT/libogg/1.3.1/install-iPhoneOS-arm64
-idz_configure arm64 7.0 $IDZ_LIB_DIR/configure
+idz_configure arm64 ${IDZ_IOS_SDK_VERSION} $IDZ_LIB_DIR/configure
 
 # Simulator build
 export IDZ_EXTRA_CONFIGURE_FLAGS=--with-ogg=$IDZ_BUILD_ROOT/libogg/1.3.1/install-iPhoneSimulator-i386
-idz_configure i386 7.0 $IDZ_LIB_DIR/configure
+idz_configure i386 ${IDZ_IOS_SDK_VERSION} $IDZ_LIB_DIR/configure
 
 export IDZ_EXTRA_CONFIGURE_FLAGS=--with-ogg=$IDZ_BUILD_ROOT/libogg/1.3.1/install-iPhoneSimulator-x86_64
-idz_configure x86_64 7.0 $IDZ_LIB_DIR/configure
+idz_configure x86_64 ${IDZ_IOS_SDK_VERSION} $IDZ_LIB_DIR/configure
 
 
 pushd install-iPhoneSimulator-x86_64/lib
