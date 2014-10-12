@@ -21,6 +21,7 @@ pushd $IDZ_LIB/$IDZ_LIB_VERSION
 curl -L -O $IDZ_URL_DIR/$IDZ_LIB_DIR.$IDZ_ARCHIVE_SUFFIX
 unzip $IDZ_LIB_DIR.$IDZ_ARCHIVE_SUFFIX
 
+patch $IDZ_LIB_DIR/configure $DIR/configure.patch
 # Phone builds
 export IDZ_EXTRA_CONFIGURE_FLAGS=--with-ogg=$IDZ_BUILD_ROOT/libogg/1.3.1/install-iPhoneOS-armv7
 idz_configure armv7 ${IDZ_IOS_SDK_VERSION} $IDZ_LIB_DIR/configure
